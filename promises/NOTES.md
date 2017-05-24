@@ -73,3 +73,9 @@ When resolve() or reject() is called the promise is settled and either .then() o
 If no value is passed, then()/catch() receives undefined. 
 
 If the value that is passed is a promise, the promise executes first, and what ever value it resolves to will be passed to the next link in the chain.
+
+
+### Thenable
+With the promise API, .then also return promises. Which means you can append another .then() and so chain a promise. The .then just has to return a value. Any method or object that returns a .then is thenable. Anything thenable can thus become part of a chain of asynchronous work. In addition .catch() is thenable.
+
+Promises, .then and .catch are thenable. Each link in the chain receives either the fulfilled value of the previous promise or the return value of the previous .then. Thus you can pass information collected from one async task to the next. This is an extremely powerful technique for simplifying complex sequences of async work
