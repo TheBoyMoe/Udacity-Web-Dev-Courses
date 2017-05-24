@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Promisify setTimeout</title>
+</head>
+<body>
+	<h1>Did the promise finish?</h1>
+	<div class="completion">Not yet</div>
+	<script>
+		function wait(ms) {
+			/*
+			Your code goes here!
+
+			Instructions:
+			(1) Wrap this setTimeout in a Promise. resolve() in setTimeout's callback.
+			(2) console.log(this) inside the Promise and observe the results.
+			(3) Make sure wait returns the Promise too!
+			 */
+			
+			return new Promise((resolve, reject) => {
+				console.log('this:', this); // global scope
+			    window.setTimeout(() => {
+				    resolve(); // no value is passed to then()
+				}, ms);
+			 
+			})
+		}
+
+		/*
+		Uncomment these lines when you want to test!
+		You'll know you've done it right when the message on the page changes.
+		 */
+		let ms = 2000;
+		wait(ms).then(finish); // calls finish() when promise resolves
+  
+		// perform the same operation synchronously
+        // window.setTimeout(() => {
+        //    finish();
+        //}, ms);
+
+		// This is just here to help you test.
+		function finish() {
+			let completion = document.querySelector('.completion');
+			completion.innerHTML = "Complete after " + ms + "ms.";
+		}
+	</script>
+</body>
+</html>
