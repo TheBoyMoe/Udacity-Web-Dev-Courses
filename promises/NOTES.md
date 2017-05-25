@@ -94,3 +94,11 @@ get('example.com').then(resolveFn).then(undefined, rejectFn);
 These two blocks of code are equivalent. The then function takes two args, if the promise resolves the first (onFulfilled) function is called, if the promise rejects, then the 2nd (onRejected) function is called. If the promise resolves and the next then does not have an onFulfilled function, then is skipped and the next then with a onFulfilled function is called. In all cases when a promise rejects, the javascript engine jumps to the next onRejected function in the chain, whether it's in a then() or catch() method.
  
 You can use either then(onFulfilled, onRejected) or catch(onRejected) to handle errors. Generally recommended that you use the latter since when using then with a 2 method signature only one of those arguments can be called, never both. When using then() followed with catch(), both can be called. If you're using a two arg then(), if there's an error with onFulfilled, you need another then() or catch() down the line to catch it. Instead if you use then() with a single arg, followed by a catch(), the same error would be caught by the catch().
+
+
+### Chaining
+There are two strategies for performing multiple asynchronous actions, they can be executed one after the other, a series, or they can be executed in parallel. One the result of one promise depends upon the input of a previous one, the promises need to executed in sequence, one after the other, e.g the quiz where you diplayed a planet, the second task depended upon a result being returned from the first.  Many times, e.g. downloading files, the operations can be executed in parallel so as to improve the performance of the app. The only problem is that you cannot guarantee the order in which the tasks complete and so the order in which you receive the results - the promises can resolve in a different order in which they were created.
+
+Synchronous code is always in series, asynchronous code can be either in series or parallel.
+
+We can use array methods such as map() and forEach() to control the order in which promises resolve.
