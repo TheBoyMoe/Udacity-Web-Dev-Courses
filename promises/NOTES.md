@@ -78,4 +78,19 @@ If the value that is passed is a promise, the promise executes first, and what e
 ### Thenable
 With the promise API, .then also return promises. Which means you can append another .then() and so chain a promise. The .then just has to return a value. Any method or object that returns a .then is thenable. Anything thenable can thus become part of a chain of asynchronous work. In addition .catch() is thenable.
 
-Promises, .then and .catch are thenable. Each link in the chain receives either the fulfilled value of the previous promise or the return value of the previous .then. Thus you can pass information collected from one async task to the next. This is an extremely powerful technique for simplifying complex sequences of async work
+Promises, .then and .catch are thenable. Each link in the chain receives either the fulfilled value of the previous promise or the return value of the previous .then. Thus you can pass information collected from one async task to the next. This is an extremely powerful technique for simplifying complex sequences of async work.
+
+
+### Error Handling
+
+```javascript
+get('example.json').then(resolveFn).catch(rejectFn);
+
+
+get('example.com').then(resolveFn).then(undefined, rejectFn);
+```
+
+
+These two blocks of code are equivalent. The then function takes two args, if the promise resolves the first (onFulfilled) function is called, if the promise rejects, then the 2nd (onRejected) function is called. If the promise resolves and the next then does not have an onFulfilled function, then is skipped and the next then with a onFulfilled function is called. In all cases when a promise rejects, the javascript engine jumps to the next onRejected function in the chain, whether it's in a then() or catch() method.
+ 
+You can use either then(onFulfilled, onRejected) or catch(onRejected) to handle errors. Generally recommended that you use the latter since when using then with a 2 method signature only one of those arguments can be called, never both. When using then() followed with catch(), both can be called. If you're using a two arg then(), if there's an error with onFulfilled, you need another then() or catch() down the line to catch it. Instead if you use then() with a single arg, followed by a catch(), the same error would be caught by the catch().
