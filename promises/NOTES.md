@@ -102,3 +102,7 @@ There are two strategies for performing multiple asynchronous actions, they can 
 Synchronous code is always in series, asynchronous code can be either in series or parallel.
 
 We can use array methods such as map() and forEach() to control the order in which promises resolve.
+
+
+### Promise.all()
+Takes an array of promises, executes them and then returns the results in the same order as the array of promises, and each promise is executed in parallel But, .all() fails fast, if one of the promises rejects it does not wait on the remaining promises, they all reject. Once they all resolve, the next then() in the chain receives the array of values.
