@@ -5,6 +5,6 @@
 	[3] https://developers.google.com/web/fundamentals/getting-started/primers/service-workers (Service Workers)
 	[4] https://davidwalsh.name/fetch (Fetch Api)
 	[5] https://github.com/udacity/exoplanet-explorer/tree/xhr-solution (exoplanet repo)
-	
+	[6] https://jakearchibald.com/2014/resolve-not-opposite-of-reject/
 
  */
