@@ -18,11 +18,23 @@ You can use the jQuery object to quickly access DOM elements, using the elements
     * .find() - traverses many levels down returning a collection of all the elements children. You must pass a selector into find(), if you want all descendants us the universal selector '*'.
     * .siblings() - return a collection of the current elements siblings, e.g. all the elements in the collection share the same immediate parent. You can pass a selector into siblings() if you want to get more specific.
     
-    
-### jQuery API
+You can pass functions into jQuery. Such functions are runs on document.ready, after the DOM has been loaded. Scripts loaded in the <head> section are downloaded and executed before the DOM has finished loading, meaning that they don't have access to the DOM. One solution is to load the script at the bottom of the <body>, ensuring the DOM has been loaded prior to the script running. Another option is to load the script via <head> but pass the script's function into the jQuery Object. This ensures the script will not be called until the DOM is fully loaded, as shown below:
 
 
+```javascript
+    function someFunction() {
+        // Do interesting things
+    }
+    $(someFunction)
+```
 
+or
+
+```javascript
+    $(function(){
+        // Do interesting things
+    })
+```
 
 
 ### References
@@ -36,6 +48,6 @@ You can use the jQuery object to quickly access DOM elements, using the elements
 [7. jQuery Forms](http://api.jquery.com/category/forms/)  
 [8. Handling Events](http://api.jquery.com/category/events/)  
 [9. jQuery Atrributes](http://api.jquery.com/category/attributes/)  
- 
+[10. Passing Functions to jQuery](http://api.jquery.com/jquery/#jQuery3)   
  
     
