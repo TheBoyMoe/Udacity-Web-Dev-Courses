@@ -19,3 +19,4 @@ $(document).ready(updateImage);
 function updateImage() {
 	$('.article-item').first().children('img').attr('src', 'http://lorempixel.com/350/150/animals/');
 }
+
