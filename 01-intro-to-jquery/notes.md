@@ -17,3 +17,25 @@ You can use the jQuery object to quickly access DOM elements, using the elements
     * .children() - return a collection of all immediate children, i.e. one level down
     * .find() - traverses many levels down returning a collection of all the elements children. You must pass a selector into find(), if you want all descendants us the universal selector '*'.
     * .siblings() - return a collection of the current elements siblings, e.g. all the elements in the collection share the same immediate parent. You can pass a selector into siblings() if you want to get more specific.
+    
+    
+### jQuery API
+
+
+
+
+
+### References
+
+[1. jQuery API Docs](http://api.jquery.com/)  
+[2. jQuery Selectors](http://api.jquery.com/category/selectors/)      
+[3. DOM manipulation](http://api.jquery.com/category/manipulation/)  
+[4. DOM Traversal](http://api.jquery.com/category/traversing/)  
+[5. jQuery Filtering](http://api.jquery.com/category/traversing/filtering/)  
+[6. jQuery Utilities](http://api.jquery.com/category/utilities/)  
+[7. jQuery Forms](http://api.jquery.com/category/forms/)  
+[8. Handling Events](http://api.jquery.com/category/events/)  
+[9. jQuery Atrributes](http://api.jquery.com/category/attributes/)  
+ 
+ 
+    
