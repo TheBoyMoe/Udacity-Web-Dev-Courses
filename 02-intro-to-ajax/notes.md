@@ -14,9 +14,41 @@ Note: when viewing xhr requests in the network tab of chrome dev tools, filter b
 Using jQuery the minimum you need to make an ajax request is a string url, a settings or configuration object of key/value pairs is optional. Most POST requests will have a url and some data, that your sending to the server. Most GET requests will include a url, possibly a settings object, and a callback function to handle the returned result.
 
 
+### jQuery ajax() and getJSON() methods
+
+jQuery's .ajax() and .getJSON() methods provide a means of simplifying asynchronous requests. Both methods take in a url an an optional options object, or you can pass in an options object containing the url.
+
+
+```javascript
+    $.ajax({
+      dataType: "json",
+      url: url,         // string url
+      data: data,       // plain object or string
+      success: success  // callback function, executed on success
+    });
+```
+
+```javascript
+    $.getJSON( "ajax/test.json", function( data ) {
+      var items = [];
+      $.each( data, function( key, val ) {
+        items.push( "<li id='" + key + "'>" + val + "</li>" );
+      });
+     
+      $( "<ul/>", {
+        "class": "my-new-list",
+        html: items.join( "" )
+      }).appendTo( "body" );
+    });
+```
+
+
+
 
 ### References
 
 [1. Chrome HAR Viewer](http://ericduran.github.io/chromeHAR/)  
 [2. jQuery Ajax](http://api.jquery.com/jquery.ajax/)  
 [3. jQuery getJson](http://api.jquery.com/jquery.getjson/)  
+[4. Google Street View API](https://developers.google.com/maps/documentation/streetview/)  
+  

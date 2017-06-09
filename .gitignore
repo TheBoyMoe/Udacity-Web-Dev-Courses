@@ -1,3 +1,5 @@
 .idea/
 node_modules/
 promises/node_modules/
+
+02-intro-to-ajax/settings.js
