@@ -42,7 +42,13 @@ jQuery's .ajax() and .getJSON() methods provide a means of simplifying asynchron
     });
 ```
 
+### CORS
 
+Web browsers implement a 'same-origin policy' to stop scripts from one website can not run on another site. There are at times legitimate reasons to do so. CORS (Cross-Origin Resource Sharing) can be enabled on a server API to disable this policy, so that when certain headers are returned by the server the browser will allow a cross domain request to occur. Another option is JSON-P, when the API does not support CORS. Many APIs allow you to provide a callback function name, the API in turn will generate a javascript file that passes the data into that functionwhen it's run in your browser. jQuery support this feature, simply add an extra property to the options object passed to the ajax method.
+
+Your application loads up a script from the other domain using a simple <script> tag. Once the script has been received, that code gets run by your browser. All the code does is build the data object you requested as a simple JavaScript object, and runs the callback function (that you told the server to use) with the object (your data) as a parameter.
+
+You need to check the API's documentation to see if it support CORS or JSON-P. 
 
 
 ### References
