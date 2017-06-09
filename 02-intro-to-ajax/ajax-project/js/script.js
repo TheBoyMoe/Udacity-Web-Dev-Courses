@@ -20,7 +20,7 @@ function loadData() {
 	let city = $('#city').val();
 	
 	streetViewUrl =`${streetViewUrl}${street}, ${city}`;
-	$body.append('<img class="bgimg" src="'+streetViewUrl+'">');
+	$body.append('<img class="bgimg" src="'+streetViewUrl+'">'); // FIXME
 	
 	// NYTimes AJAX request to fetch articles
 	const nytBaseUrl = 'https://api.nytimes.com/svc/search/v2/articlesearch.json';
@@ -36,6 +36,9 @@ function loadData() {
 							</li>`);
 		});
 		$nytElem.append(articles);
+	}).fail((err) => {
+		console.error(`Request failed:`, err.message);
+		$nytHeaderElem.text(`Request failed, no articles could be loaded`);
 	});
 	
 	
