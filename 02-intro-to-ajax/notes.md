@@ -59,4 +59,6 @@ You need to check the API's documentation to see if it support CORS or JSON-P.
 [4. Google Street View API](https://developers.google.com/maps/documentation/streetview/)  
 [5. NYT api](http://developer.nytimes.com/)  
 [5. NYT api console](http://developer.nytimes.com/article_search_v2.json#/Console/GET/articlesearch.json)  
+[6. Wikipedia & CORS/JSON-P](https://www.mediawiki.org/wiki/API:Cross-site_requests)  
+
   

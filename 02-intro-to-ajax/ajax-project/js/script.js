@@ -20,7 +20,7 @@ function loadData() {
 	let city = $('#city').val();
 	
 	streetViewUrl =`${streetViewUrl}${street}, ${city}`;
-	$body.append('<img class="bgimg" src="'+streetViewUrl+'">'); // FIXME
+	$body.append(`<img class="bgimg" src="${streetViewUrl}">`); // FIXME
 	
 	// NYTimes AJAX request to fetch articles
 	const nytBaseUrl = 'https://api.nytimes.com/svc/search/v2/articlesearch.json';
@@ -41,6 +41,31 @@ function loadData() {
 		$nytHeaderElem.text(`Request failed, no articles could be loaded`);
 	});
 	
+	
+	// Wikipedia ajax request using json-p - error handling is not built into json-p,
+	// we use a setTimeout to stop the request if it runs for too long.
+	const wikiUrl = `http://en.wikipl;kkedia.org/w/api.php?action=opensearch&search=${city}&format=json&callback=wikiCallback`;
+	
+	const wikiTimeout = setTimeout(() => {
+		$wikiElem.text(`Request timed out, failed to retrieve resources`);
+	}, 8000);
+	
+	$.ajax({
+		url: wikiUrl,
+		dataType: "jsonp",
+		// setting the dataType to 'jsonp' sets the callback name to 'callback'
+		// optionally we can add the jsonp prop to specify the name
+		jsonp: "callback",
+		success: function (response) {
+			let articleList = response[1];
+			$.each(articleList, (i, article) => {
+				let url = `http://en.wikipedia.org/wiki/${article}`;
+				$wikiElem.append(`<li><a href="${url}" target="_blank">${article}</a></li>`);
+			});
+			// stop the error handler from executing
+			clearTimeout(wikiTimeout);
+		}
+	});
 	
     return false;
 }
