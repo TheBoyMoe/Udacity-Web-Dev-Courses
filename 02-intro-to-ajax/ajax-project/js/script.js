@@ -1,8 +1,8 @@
-//import {apikey} from './../settings.js';
+import {nytApikey} from './../settings.js';
 
 
 function loadData() {
-
+	
     const $body = $('body');
     const $wikiElem = $('#wikipedia-links');
     const $nytHeaderElem = $('#nytimes-header');
@@ -20,7 +20,16 @@ function loadData() {
 	
 	streetViewUrl =`${streetViewUrl}${street}, ${city}`;
 	$body.append('<img class="bgimg" src="'+streetViewUrl+'">');
-		
+	
+	// TODO NYTimes AJAX request to fetch articles
+	const nytBaseUrl = 'https://api.nytimes.com/svc/search/v2/articlesearch.json';
+	const nytUrl = `${nytBaseUrl}?${$.param({'api-key': nytApikey})}`;
+	console.log(nytUrl);
+	$.getJSON(nytUrl, function (data) {
+		console.log(data);
+	});
+	
+	
     return false;
 }
 
