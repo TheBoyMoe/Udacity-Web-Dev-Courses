@@ -51,4 +51,6 @@ jQuery's .ajax() and .getJSON() methods provide a means of simplifying asynchron
 [2. jQuery Ajax](http://api.jquery.com/jquery.ajax/)  
 [3. jQuery getJson](http://api.jquery.com/jquery.getjson/)  
 [4. Google Street View API](https://developers.google.com/maps/documentation/streetview/)  
+[5. NYT api](http://developer.nytimes.com/)  
+[5. NYT api console](http://developer.nytimes.com/article_search_v2.json#/Console/GET/articlesearch.json)  
   

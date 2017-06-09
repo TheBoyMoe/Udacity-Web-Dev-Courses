@@ -1,3 +1,4 @@
+"use strict";
 import {nytApikey} from './../settings.js';
 
 
@@ -21,12 +22,20 @@ function loadData() {
 	streetViewUrl =`${streetViewUrl}${street}, ${city}`;
 	$body.append('<img class="bgimg" src="'+streetViewUrl+'">');
 	
-	// TODO NYTimes AJAX request to fetch articles
+	// NYTimes AJAX request to fetch articles
 	const nytBaseUrl = 'https://api.nytimes.com/svc/search/v2/articlesearch.json';
 	const nytUrl = `${nytBaseUrl}?${$.param({'api-key': nytApikey})}`;
 	console.log(nytUrl);
 	$.getJSON(nytUrl, function (data) {
+		let articles = [];
 		console.log(data);
+		$.each(data.response.docs, (i, doc) => {
+			articles.push(`<li id="article-${i}">
+								<a href="${doc.web_url}" target="_blank">${doc.headline.print_headline}</a>
+								<p>${doc.snippet}</p>
+							</li>`);
+		});
+		$nytElem.append(articles);
 	});
 	
 	
