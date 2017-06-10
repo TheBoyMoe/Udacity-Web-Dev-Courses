@@ -68,7 +68,7 @@ import {nytApikey, unsplashAppID} from './settings.js';
 				}
 				htmlContent += '</ul>'
 			} else {
-				htmlContent = `<div id="error-no-image">No images available</div>`;
+				htmlContent = `<div id="error-no-image">No articles available</div>`;
 			}
 			// add content to the page
 			responseContainer.insertAdjacentHTML('beforeend', htmlContent);
