@@ -60,7 +60,7 @@ import {nytApikey, unsplashAppID} from './settings.js';
 					let title = article.headline.main;
 					let url = article.web_url;
 					htmlContent += `<li class="article">
-										<h3><a href="${url}">${title}</a></h3>
+										<h3><a href="${url}" target="_blank">${title}</a></h3>
 										<p>${snippet}</p>
 									</li>`;
 				}
