@@ -6,6 +6,8 @@ As with xhr or jquery ajax requests, fetch is affected by the same-origin policy
 
 THe default method is 'GET', you can set the HTTP method using the method property in the configuration object. When a fetch request is made a promise is returned. When this resolves it returns a Response object. To extract the content, 'body' from the response object call .json() when the api returns json (.blob() when image data is returned). The .json() method returns another promise, so we need to chain another .then() to receive the data.
 
+There are a number of methods on the Response object, each one responsible for processing a particular data type, e.g .json() for json data, .blob() for images, .formData() for form data objects, arrayBuffer() for array buffers and text() for string data. Each returns a promise, which requires chaining another then() method to handle the result.
+
 
 
 ### References
@@ -14,3 +16,4 @@ THe default method is 'GET', you can set the HTTP method using the method proper
 [2. Fetch Polyfill](https://github.github.io/fetch/)  
 [3. Fetch Api](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)  
 [4. Using Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)  
+[5. Fetch API](https://davidwalsh.name/fetch)  

@@ -12,7 +12,7 @@ import {nytApikey, unsplashAppID} from './settings.js';
 		event.preventDefault();
 		responseContainer.innerHTML = '';
 		fetchImage(searchField.value);
-		// fetchArticles(searchField.value);
+		fetchArticles(searchField.value);
 		searchField.value = '';
 	});
 	
@@ -23,14 +23,9 @@ import {nytApikey, unsplashAppID} from './settings.js';
 				Authorization: `Client-ID ${unsplashAppID}`
 			}
 		})
-		.then((response) => {
-			return response.json();
-		})
-		.then((data) => {
-			// display image on screen
-			addImage(data, keyword);
-		})
-		.catch((err) => console.error(err));
+		.then((response) => response.json())
+		.then((data) => addImage(data, keyword))
+		.catch((err) => requestError(err, 'image'));
 	}
 	
 	function addImage(data, keyword) {
@@ -50,6 +45,46 @@ import {nytApikey, unsplashAppID} from './settings.js';
 		// append data to the page
 		responseContainer.insertAdjacentHTML('afterbegin', htmlContent);
 	}
+	
+	function fetchArticles(keyword) {
+		let nytUrl = `${nytBaseUrl}${keyword}&api-key=${nytApikey}`;
+		fetch(nytUrl, {
+			method: 'GET'
+		})
+		.then((response) => response.json())
+		.then((data) => addArticles(data))
+		.catch((err) => requestError(err, 'articles'));
+	}
+	
+	function addArticles(data) {
+		let htmlContent = '';
+		if(data.response && data.response.docs && data.response.docs.length > 1) {
+			let articles = data.response.docs;
+			htmlContent = '<ul id="articles">';
+			for (let article of articles) {
+				let snippet = article.snippet;
+				let title = article.headline.main;
+				let url = article.web_url;
+				htmlContent += `<li class="article">
+										<h3><a href="${url}" target="_blank">${title}</a></h3>
+										<p>${snippet}</p>
+									</li>`;
+			}
+			htmlContent += '</ul>'
+		} else {
+			htmlContent = `<div class="error-no-articles error">No articles available</div>`;
+		}
+		// add content to the page
+		responseContainer.insertAdjacentHTML('beforeend', htmlContent);
+	}
+	
+	
+	function requestError(err, str) {
+		console.error(`Error fetching ${str}`, err.message);
+		let htmlContent = `<div class="network-error error">No ${str} available</div>`;
+		responseContainer.insertAdjacentHTML('beforeend', htmlContent);
+	}
+	
 	
 	// default image shown when page first loads
 	fetchImage('night sky');
