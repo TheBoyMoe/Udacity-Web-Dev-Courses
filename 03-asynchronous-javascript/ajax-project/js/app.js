@@ -54,7 +54,24 @@ import {nytApikey, unsplashAppID} from './settings.js';
 		req.onload = function () {
 			let htmlContent = '';
 			const data = JSON.parse(this.responseText);
-			console.log(data);
+			if(data.response && data.response.docs && data.response.docs.length > 1) {
+				let articles = data.response.docs;
+				htmlContent = '<ul id="articles">';
+				for (let article of articles) {
+					let snippet = article.snippet;
+					let title = article.headline.main;
+					let url = article.web_url;
+					htmlContent += `<li class="article">
+										<h3><a href="${url}">${title}</a></h3>
+										<p>${snippet}</p>
+									</li>`;
+				}
+				htmlContent += '</ul>'
+			} else {
+				htmlContent = `<div id="error-no-image">No images available</div>`;
+			}
+			// add content to the page
+			responseContainer.insertAdjacentHTML('beforeend', htmlContent);
 		};
 		req.onerror = function () {
 			console.error(this.err.message);

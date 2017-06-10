@@ -56,4 +56,4 @@ When requesting from an api that returns json, all we need to do is convert that
 [5. Unsplash api](https://unsplash.com/developers)  
 [6. Unsplash JS Client library](https://github.com/unsplash/unsplash-js)  
 [7. NYT Developers Page](https://developer.nytimes.com/)  
-
+[8. XHR Request](https://www.html5rocks.com/en/tutorials/file/xhr2/)  
