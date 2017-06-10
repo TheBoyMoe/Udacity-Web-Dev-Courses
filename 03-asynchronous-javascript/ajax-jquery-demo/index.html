@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ajax Demo App</title>
+	<style>
+		#content {
+			width: 90%;
+			margin: 40px auto;
+		}
+		header,
+		figcaption,
+		#error-no-image {
+			text-align: center;
+		}
+		header {
+			margin-bottom: 40px;
+		}
+		figcaption {
+			margin-top: 20px;
+		}
+		img {
+			width: 100%;
+		}
+	</style>
+</head>
+<body>
+	<div id="content">
+		<header>
+			<h1>What are you interested in today?</h1>
+			<form action="#" id="search-form">
+				<label for="search-keyword">Search Term</label>
+				<input type="text" id="search-keyword" name="keyword">
+				<input type="submit" id="button">
+			</form>
+		</header>
+		<div id="response-container"></div>
+	</div>
+	<script src="https://jspm.io/system.js"></script>
+	<script src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/config.js"></script>
+	<script>
+		System.import('./js/app.js');
+	</script>
+</body>
+</html>
