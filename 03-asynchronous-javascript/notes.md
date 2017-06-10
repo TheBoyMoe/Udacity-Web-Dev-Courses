@@ -24,11 +24,11 @@ To handle a successful response to a XHR request, we need to set the onload prop
 ```javascript
     var xhr = new XMLHttpRequest();
     xhr.open('GET', 'https://unsplash.com');
-    xhr.onload = function (data) {
-      console.log(data);
+    xhr.onload = function () {
+      console.log(this.responseText);
     };
-    xhr.onerror = function(err) { 
-      console.error(err.message);
+    xhr.onerror = function() { 
+      console.error(this.err.message);
     };
     xhr.send();
 ```
@@ -52,6 +52,8 @@ When requesting from an api that returns json, all we need to do is convert that
 [1. XMLHttpRequest Object](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)  
 [2. XHR open method](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/open)  
 [3. XHR send method](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/send)  
-[4. Unsplash api](https://unsplash.com/developers)  
-[5. Unsplash JS Client library](https://github.com/unsplash/unsplash-js)  
+[4. XHR set request header method](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/setRequestHeader)  
+[5. Unsplash api](https://unsplash.com/developers)  
+[6. Unsplash JS Client library](https://github.com/unsplash/unsplash-js)  
+[7. NYT Developers Page](https://developer.nytimes.com/)  
 
