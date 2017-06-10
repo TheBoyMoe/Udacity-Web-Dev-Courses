@@ -1,6 +1,6 @@
 ## Ajax
 
-Many websites have solved the problem of loading content after the first page load without reloading (automatically loading more content when you reach the bottom of the page) with the use of ajax, or asynchronous javascript. Ajax requests allow for content retrieval and display without reloading the web page.
+Many websites have solved the problem of loading content after the first page load without reloading (e.g. automatically loading more content when you reach the bottom of the page) without refreshing the entire page (as was the case in the past) with the use of ajax, or asynchronous javascript. Ajax requests allow for content retrieval and display without reloading the web page.
 
 When a request is made synchronously the page has to wait for the request to complete to continue the load process. Asynchronous requests happen in the background without blocking the rest of the page load, allowing other tasks to be completed, e.g. rendering the rest of the page. When they complete, the browser receives the result and at that point executes a callback function - and process the result in some way, i.e display the data in the page.
 
