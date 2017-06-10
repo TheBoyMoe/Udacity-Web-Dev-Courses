@@ -35,12 +35,12 @@ To handle a successful response to a XHR request, we need to set the onload prop
 
 ### APIs and JSON
 
-When requesting from an api that returns json, all we need to do is convert that json to a js object using the JSON.parse() method.
+When requesting from an api that returns json, all we need to do is convert that json to a js object using the JSON.parse() method. The response is stored in the xhr's responseText property - access via this.responseText. In this particular case the response is in JSON, so we'll use the JSOn.parse() method to convert it into a js object.
 
 
 ```javascript
-    xhr.onload = function(data) {
-        console.log(JSON.parse(data))
+    xhr.onload = function() {
+        console.log(JSON.parse(this.responseText));
     }
 ```
 
