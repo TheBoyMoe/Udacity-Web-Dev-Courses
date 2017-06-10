@@ -27,14 +27,31 @@ To handle a successful response to a XHR request, we need to set the onload prop
     xhr.onload = function (data) {
       console.log(data);
     };
-    xhr.onerror = function(err) {
+    xhr.onerror = function(err) { 
       console.error(err.message);
     };
     xhr.send();
 ```
+
+### APIs and JSON
+
+When requesting from an api that returns json, all we need to do is convert that json to a js object using the JSON.parse() method.
+
+
+```javascript
+    xhr.onload = function(data) {
+        console.log(JSON.parse(data))
+    }
+```
+
+
+
 
 ### References
 
 [1. XMLHttpRequest Object](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)  
 [2. XHR open method](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/open)  
 [3. XHR send method](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/send)  
+[4. Unsplash api](https://unsplash.com/developers)  
+[5. Unsplash JS Client library](https://github.com/unsplash/unsplash-js)  
+

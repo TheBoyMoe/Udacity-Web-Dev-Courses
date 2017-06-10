@@ -3,3 +3,4 @@ node_modules/
 promises/node_modules/
 
 02-intro-to-ajax/ajax-project/settings.js
+03-asynchronous-javascript/ajax-project/js/settings.js

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ajax Demo App</title>
+</head>
+<body>
+	<header>
+		<h1>What are you interested in today?</h1>
+		<form action="#" id="search-form">
+			<label for="search-keyword">Search Term</label>
+			<input type="text" id="search-keyword" name="keyword">
+			<input type="submit" id="button">
+		</form>
+	</header>
+	<div id="response-container"></div>
+	
+	<script src="https://jspm.io/system.js"></script>
+	<script type="text/javascript" src="js/config.js"></script>
+	<script>
+		System.import('./js/app.js');
+	</script>
+</body>
+</html>
